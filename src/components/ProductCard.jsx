@@ -33,28 +33,42 @@ const ProductCard = ({ product: prod }) => {
   const [msg, setMsg] = useState("Successfully Rated!");
 
   const { user, accessToken, setCartItems } = useContext(AuthContext);
-
+  const [cartId, setCartId] = useState(null);
   const handleFavourites = () => {
     setFavClr(!favClr);
   };
 
   const handleCart = () => {
     setCartClr(!cartClr);
-    ProductService.addToCart(
-      { product: prod, userId: user.id },
-      accessToken
-    ).then((data) => {
-      console.log(data);
-      if (data.success) {
-        setStatus("success");
-        setMsg(data.message);
-        setOpen(true);
-        setCartItems((c) => c + 1);
-      } else {
-        setStatus("error");
-        setMsg(data.message);
-      }
-    });
+    if (cartClr) {
+      ProductService.removeFromCart(cartId, accessToken).then((data) => {
+        if (data.success) {
+          setCartItems((c) => c - 1);
+          setStatus("success");
+          setMsg(data.message);
+        } else {
+          setStatus("error");
+          setMsg("Removed Product!");
+        }
+      });
+    } else {
+      ProductService.addToCart(
+        { product: prod, userId: user.id },
+        accessToken
+      ).then((data) => {
+        // console.log(data);
+        if (data.success) {
+          setCartId(data.data.id);
+          setStatus("success");
+          setMsg(data.message);
+          setOpen(true);
+          setCartItems((c) => c + 1);
+        } else {
+          setStatus("error");
+          setMsg(data.message);
+        }
+      });
+    }
   };
 
   const handleClose = (event, reason) => {
@@ -86,7 +100,7 @@ const ProductCard = ({ product: prod }) => {
             {prod.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            ${prod.amount}
+            ₹ {prod.amount}
           </Typography>
           <Div>{prod.rating}</Div>
         </CardContent>

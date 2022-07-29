@@ -32,7 +32,7 @@ export default {
     return data;
   },
   // same will be used to remove from cart as well
-  addToCart: async (product, at, news) => {
+  addToCart: async (product, at) => {
     const res = await fetch(`carts/`, {
       method: "POST",
       body: JSON.stringify(product),
@@ -64,16 +64,25 @@ export default {
     });
     return await res.json();
   },
-  order: async (order, at) => {
-    const res = await fetch(`${own}/orders`, {
+  order: async (orders, at) => {
+    const res = await fetch(`orders/`, {
       method: "POST",
-      body: JSON.stringify(order),
+      body: JSON.stringify(orders),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${at}`,
       },
     });
-    return await res.json();
+    let dataFrmt = { success: false, data: null };
+    let data = await res.json();
+    if (res.status == 201) {
+      dataFrmt.success = true;
+      dataFrmt.data = data;
+    } else {
+      dataFrmt.data = data;
+      dataFrmt.success = false;
+    }
+    return dataFrmt;
   },
   getAllWishListProducts: async (at, id) => {
     const res = await fetch(`${auth}/favourites?userid=${id}`, {
@@ -90,5 +99,24 @@ export default {
       },
     });
     return await res.json();
+  },
+  removeFromCart: async (id, at) => {
+    const res = await fetch(`carts/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${at}`,
+      },
+    });
+    let dataFrmt = { success: false, message: "", data: null };
+    let data = await res.json();
+    if (res.status == 200) {
+      dataFrmt.success = true;
+      dataFrmt.data = data;
+      dataFrmt.message = "Removed!";
+    } else {
+      dataFrmt.message = data;
+      dataFrmt.success = false;
+    }
+    return dataFrmt;
   },
 };
