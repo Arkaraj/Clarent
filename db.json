@@ -1,5 +1,20 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "test@123.com",
+      "password": "$2a$10$pWm7HLJGFw3Pd7FPOea.luTY3Ra9m/grwhK0k3sA/yEVsW1KiyPTO",
+      "firstname": "Arkaraj",
+      "lastname": "Ghosh",
+      "id": 1
+    },
+    {
+      "email": "arkaraj@test.com",
+      "password": "$2a$10$.nIqjKzT6trq8tZr.kBPQu3uvTyYZQKboi3huVZ0TRdgpb56rcHcu",
+      "firstname": "Arkaraj2",
+      "lastname": "Ghosh",
+      "id": 2
+    }
+  ],
   "products": [
     {
       "id": 1,
