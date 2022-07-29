@@ -13,3 +13,31 @@ body {
   margin: 1%;
   margin-top: 8%;
 }
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  margin: 10rem auto 0;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top: 3px solid #49a6e9;
+  -webkit-animation: spinner 0.6s linear infinite;
+  animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+footer {
+  margin-top: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    margin: 5%;
+    margin-top: 16%;
+  }
+}

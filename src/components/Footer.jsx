@@ -1,9 +1,19 @@
 import React from "react";
+import { Container, Box } from "@mui/material";
 
 const Footer = () => {
   return (
     <footer>
-      <h1>Clarent &reg; {new Date().getFullYear()}</h1>
+      <Box
+        px={{ xs: 3, sm: 5 }}
+        py={{ xs: 5, sm: 5 }}
+        bgcolor="text.secondary"
+        color="white"
+      >
+        <Container maxWidth="lg">
+          <Box textAlign="center">Clarent &reg; {new Date().getFullYear()}</Box>
+        </Container>
+      </Box>
     </footer>
   );
 };

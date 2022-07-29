@@ -8,7 +8,7 @@ export default ({ children }) => {
   // Global state
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isloaded, setIsLoaded] = useState(true);
+  const [isloaded, setIsLoaded] = useState(false);
   const [accessToken, setAccessToken] = useState("");
 
   useEffect(() => {
@@ -17,6 +17,7 @@ export default ({ children }) => {
       setIsAuthenticated(true);
       setUser(JSON.parse(userString));
     }
+    setIsLoaded(true);
   }, []);
 
   return (
