@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ProductService from "../Services/ProductService";
 import Grid from "@mui/material/Grid";
 import ProductCard from "./ProductCard";
-// import AuthService from "../Services/AuthService";
+import { AuthContext } from "../Context/AuthContext";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const {
+    user: { id },
+  } = useContext(AuthContext);
   useEffect(() => {
     ProductService.getAllProducts().then((data) => {
       setProducts(data);
+      setLoading(false);
     });
-    // AuthService.getUsersCartProducts()
   }, []);
 
   return (
-    <div>
-      <h1>Products</h1>
-      <br />
-      {/* <pre>{JSON.stringify(products, null, 2)}</pre> */}
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={5}>
-          {products.map((prod) => (
-            <ProductCard product={prod} key={prod.id} />
-          ))}
-        </Grid>
-      </Grid>
-    </div>
+    <>
+      {!loading ? (
+        <div>
+          <h1>Products</h1>
+          <br />
+          <Grid item xs={12}>
+            <Grid container justifyContent="center" spacing={5}>
+              {products.map((prod) => (
+                <ProductCard product={prod} key={prod.id} />
+              ))}
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        <p className="loading"></p>
+      )}
+    </>
   );
 };
 

@@ -33,7 +33,7 @@ export default {
   },
   // same will be used to remove from cart as well
   addToCart: async (product, at) => {
-    const res = await fetch(`carts/`, {
+    const res = await fetch(`/carts/`, {
       method: "POST",
       body: JSON.stringify(product),
       headers: {
@@ -46,7 +46,7 @@ export default {
     if (res.status == 201) {
       dataFrmt.success = true;
       dataFrmt.data = data;
-      dataFrmt.message = "Successfully Registered!";
+      dataFrmt.message = "Added To Cart!";
     } else {
       dataFrmt.message = data;
       dataFrmt.success = false;
@@ -54,7 +54,7 @@ export default {
     return dataFrmt;
   },
   addToWishList: async (favs, at) => {
-    const res = await fetch(`${own}/favourites`, {
+    const res = await fetch(`favourites/`, {
       method: "POST",
       body: JSON.stringify(favs),
       headers: {
@@ -62,7 +62,17 @@ export default {
         Authorization: `Bearer ${at}`,
       },
     });
-    return await res.json();
+    let dataFrmt = { success: false, message: "", data: null };
+    let data = await res.json();
+    if (res.status == 201) {
+      dataFrmt.success = true;
+      dataFrmt.data = data;
+      dataFrmt.message = "Added To Favourites!";
+    } else {
+      dataFrmt.message = data;
+      dataFrmt.success = false;
+    }
+    return dataFrmt;
   },
   order: async (orders, at) => {
     const res = await fetch(`orders/`, {
@@ -99,6 +109,25 @@ export default {
       },
     });
     return await res.json();
+  },
+  removeFromWishList: async (id, at) => {
+    const res = await fetch(`favourites/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${at}`,
+      },
+    });
+    let dataFrmt = { success: false, message: "", data: null };
+    let data = await res.json();
+    if (res.status == 200) {
+      dataFrmt.success = true;
+      dataFrmt.data = data;
+      dataFrmt.message = "Removed!";
+    } else {
+      dataFrmt.message = data;
+      dataFrmt.success = false;
+    }
+    return dataFrmt;
   },
   removeFromCart: async (id, at) => {
     const res = await fetch(`carts/${id}`, {

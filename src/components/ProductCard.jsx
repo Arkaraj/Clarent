@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -13,6 +13,7 @@ import { styled } from "@mui/material/styles";
 import { Snackbar, Alert } from "@mui/material";
 import ProductService from "../Services/ProductService";
 import { AuthContext } from "../Context/AuthContext";
+import AuthService from "../Services/AuthService";
 
 const Div = styled("div")(({ theme }) => ({
   ...theme.typography.button,
@@ -30,13 +31,34 @@ const ProductCard = ({ product: prod }) => {
   const [favClr, setFavClr] = useState(false);
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("success");
-  const [msg, setMsg] = useState("Successfully Rated!");
+  const [msg, setMsg] = useState("Successfully Saved!");
 
   const { user, accessToken, setCartItems } = useContext(AuthContext);
   const [cartId, setCartId] = useState(null);
-  const handleFavourites = () => {
-    setFavClr(!favClr);
-  };
+  const [favCartId, setFavCartId] = useState(null);
+
+  useEffect(() => {
+    AuthService.getUsersCartProducts(user.id).then((data) => {
+      if (data.length > 0) {
+        data.map((d) => {
+          if (prod.id == d.product.id) {
+            setCartClr(true);
+            setCartId(d.id);
+          }
+        });
+      }
+    });
+    ProductService.getAllWishListProducts(user.id).then((data) => {
+      if (data.length > 0) {
+        data.map((d) => {
+          if (prod.id == d.favouriteList) {
+            setFavClr(true);
+            setFavCartId(d.id);
+          }
+        });
+      }
+    });
+  }, []);
 
   const handleCart = () => {
     setCartClr(!cartClr);
@@ -63,6 +85,36 @@ const ProductCard = ({ product: prod }) => {
           setMsg(data.message);
           setOpen(true);
           setCartItems((c) => c + 1);
+        } else {
+          setStatus("error");
+          setMsg(data.message);
+        }
+      });
+    }
+  };
+
+  const handleFavourites = () => {
+    setFavClr(!favClr);
+    if (favClr) {
+      ProductService.removeFromWishList(favCartId, accessToken).then((data) => {
+        if (data.success) {
+          setStatus("success");
+          setMsg(data.message);
+        } else {
+          setStatus("error");
+          setMsg("Removed Product!");
+        }
+      });
+    } else {
+      ProductService.addToWishList(
+        { favouriteList: prod.id, userId: user.id },
+        accessToken
+      ).then((data) => {
+        if (data.success) {
+          setFavCartId(data.data.id);
+          setStatus("success");
+          setMsg(data.message);
+          setOpen(true);
         } else {
           setStatus("error");
           setMsg(data.message);

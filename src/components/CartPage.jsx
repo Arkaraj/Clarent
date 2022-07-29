@@ -65,7 +65,7 @@ const CartPage = () => {
     <div style={{ margin: "1rem 5rem" }}>
       {cart ? (
         <Grid container spacing={2}>
-          <Grid item xs={false} sm={4} md={7} elevation={6}>
+          <Grid item xs={false} sm={false} md={7} elevation={6}>
             <Box
               sx={{
                 p: 2,
@@ -81,6 +81,7 @@ const CartPage = () => {
                   <CartCard
                     prod={c.product}
                     key={c.id}
+                    cartId={c.id}
                     setCart={setCart}
                     setPrice={setPrice}
                   />
@@ -93,7 +94,7 @@ const CartPage = () => {
           <Grid
             item
             xs={12}
-            sm={8}
+            sm={12}
             md={5}
             sx={{
               display: {

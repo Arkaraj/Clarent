@@ -12,6 +12,7 @@ import Register from "./Components/Register";
 import Products from "./Components/Products";
 import ProductPage from "./Components/ProductPage";
 import CartPage from "./Components/CartPage";
+import SearchProducts from "./Components/SearchProducts";
 
 function App() {
   return (
@@ -68,6 +69,15 @@ function App() {
               element={
                 <PrivateRoutes>
                   <CartPage />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/search/:productName"
+              exact
+              element={
+                <PrivateRoutes>
+                  <SearchProducts />
                 </PrivateRoutes>
               }
             />

@@ -56,7 +56,7 @@ const SearchBar = ({ history }) => {
       alert("Plese enter a search term");
       return;
     }
-    const searchTerm = text.toLowerCase().replace(/ /g, "+");
+    const searchTerm = text.replace(/ /g, "%20");
 
     navigate(`/search/${searchTerm}`);
   };

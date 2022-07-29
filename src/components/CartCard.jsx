@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Container, ButtonGroup, Button, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import CancelIcon from "@mui/icons-material/Cancel";
+import ProductService from "../Services/ProductService";
+import { AuthContext } from "../Context/AuthContext";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -33,13 +36,26 @@ const StyledInput = styled(TextField)({
   },
 });
 
-const CartCard = ({ prod, setCart, setPrice }) => {
+const CartCard = ({ prod, setCart, setPrice, cartId }) => {
   const [count, setCount] = useState(1);
   const handleChange = (e) => {
     setCount(Math.max(Number(e.target.value), 1));
   };
+  const { setCartItems, accessToken } = useContext(AuthContext);
+  const cancelCart = () => {
+    ProductService.removeFromCart(cartId, accessToken).then((data) => {
+      if (data.success) {
+        setCartItems((c) => c - 1);
+        setCart((c) => c.filter((x) => x.id != cartId));
+        setPrice((p) => p - parseInt(prod.amount));
+      } else {
+        alert("There was an error in removing the item");
+      }
+    });
+  };
+
   return (
-    <Item key={prod.id} elevation={4} className="OrderItems" xs={10}>
+    <Item key={prod.id} elevation={4} className="OrderItems" xs={10} sm={10}>
       <div>
         <img
           src={prod.image}
@@ -79,6 +95,11 @@ const CartCard = ({ prod, setCart, setPrice }) => {
           </ButtonGroup>
         </Container>
       </div>
+      <CancelIcon
+        size="medium"
+        style={{ color: "red", marginTop: "5rem" }}
+        onClick={cancelCart}
+      />
     </Item>
   );
 };
