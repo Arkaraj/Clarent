@@ -1,81 +1,81 @@
-# Ecommerce (React) Coding Assessment
+# Clarent
 
-## Overview
+A E-commerce WebAPP for frontend using React js.
 
-To complete this assessment, you will need to use this [Ecommerce-boilerplate](https://github.com/gurukishore111/Ecommerce-boilerplate) web app.
+# Get Started
 
-The purpose of this assessment is to assess your **skills and approach to composing a simple web app** given an API feed.
+```bash
 
-## What to do?
+# git clone
+git clone https://github.com/gurukishore111/Ecommerce-boilerplate.git Clarent
 
-Your goal is to implement an eCommerce application. The CSS framework/library is totally up to you.
+npm i
 
-Although it's a very basic exercise, we will be looking for simple, well-designed, well-commented, and tested code in the submission.
+```
 
-Please include a `README` with setup instructions and any other documentation you created as part of your solution.
+# To Run This Locally
 
-Also, add very short info for the following to your `README`:
+```bash
 
-- Describe all the application functionalities
-- Are there any improvements you could make to your submission?
-- What would you do differently if you were allocated more time?
+git clone https://github.com/Arkaraj/Clarent.git
 
-Once you complete implementation, please add the link to the hosted repository (e.g. Github). Alternatively, you may submit your code as a ZIP file too.
+cd Clarent
 
-(NOTE: You have to use the latest version of v18 and react-router-dom v6)
+npm i
 
-## How should the application work?
+# To run Server (runs in port 5000)
+npm run server
 
-The user of this react application should be able to view all the products. The application should have the following workflow,
+# React code
+npm start
 
-1. Create the login/register functionality.
-2. Once the user is authenticated
-3. Users can add the products to the cart page
-4. Also user can add their favourite products
+```
 
-## Development Setup
+# Images
 
-- Clone this repo
-- `npm install` - To install the dependencies
-- `npm run server` - To start the JSON server
-- `npm start` - To start the react app
+Login
+![Screenshot 2022-07-30 at 2 50 13 AM](https://user-images.githubusercontent.com/55324916/181844705-65383e51-70b8-4f93-b182-c77f4fd9a8af.png)
 
-## This project's user interface should like this.
+Register (added my own)
+![Screenshot 2022-07-30 at 2 50 33 AM](https://user-images.githubusercontent.com/55324916/181844708-8d13449e-8e46-4808-a974-81a1b978d178.png)
 
-### Login/Register page
+Phone View
+![Screenshot 2022-07-30 at 2 51 22 AM](https://user-images.githubusercontent.com/55324916/181844718-19bcde5c-c8bc-4594-bd31-e11d7995fc1c.png)
 
-<img width="1512" alt="Screenshot 2022-07-24 at 10 44 13 AM" src="https://user-images.githubusercontent.com/52570524/180701451-5ccce009-0384-426c-b1bc-d7536fd7b142.png">
+Products Page
+![Screenshot 2022-07-30 at 2 42 12 AM](https://user-images.githubusercontent.com/55324916/181844772-aa9d4bf5-73c5-42c2-9da3-8db90c51d6bf.png)
 
-### Home page
+Specifc Product Page
+![Screenshot 2022-07-30 at 2 41 37 AM](https://user-images.githubusercontent.com/55324916/181844795-3cfe3efc-8f4b-41c9-9943-43931f486970.png)
 
-<img width="1512" alt="Screenshot 2022-07-24 at 10 45 58 AM" src="https://user-images.githubusercontent.com/52570524/180701523-b679c753-68ff-47f1-9a1b-f4cc04d88fea.png">
+Products Page Cart Functionality
+![Screenshot 2022-07-30 at 2 48 06 AM](https://user-images.githubusercontent.com/55324916/181844899-7209bd4d-a23d-4eb1-983b-79a34758494b.png)
 
-### Product detail page
+Products Page Favourites Functionality
+![Screenshot 2022-07-30 at 2 48 19 AM](https://user-images.githubusercontent.com/55324916/181844915-e5e97d36-b8e7-4c68-9ed0-b8599cbc7414.png)
 
-<img width="675" alt="Screenshot 2022-07-24 at 10 53 17 AM" src="https://user-images.githubusercontent.com/52570524/180701655-7c3d3120-ff81-445a-81d9-b2152db8a776.png">
+Cart/Checkout Page
+![Screenshot 2022-07-30 at 2 48 41 AM](https://user-images.githubusercontent.com/55324916/181844925-beb22f51-3619-4a39-9ce4-4d983f4d3e33.png)
 
-### Cart page
+Order Placed
+![Screenshot 2022-07-30 at 2 48 53 AM](https://user-images.githubusercontent.com/55324916/181844969-e4fd726d-8bdc-4dbf-89ae-4d13dab9910f.png)
 
-<img width="1415" alt="Screenshot 2022-07-24 at 10 50 18 AM" src="https://user-images.githubusercontent.com/52570524/180701661-a587033d-4616-40f8-9260-dfd3e8b97152.png">
+DB.JSON
+![Screenshot 2022-07-30 at 2 49 14 AM](https://user-images.githubusercontent.com/55324916/181845019-b7ad5532-3c80-45f9-9ef6-4ddc041008a0.png)
 
-<img width="1472" alt="Screenshot 2022-07-24 at 10 51 16 AM" src="https://user-images.githubusercontent.com/52570524/180701674-31c7e11c-56b3-4f24-83c4-e9d582c4b3f8.png">
+Main Page
+![Screenshot 2022-07-30 at 2 49 55 AM](https://user-images.githubusercontent.com/55324916/181845038-849c10cb-69da-47e7-8882-476664223098.png)
 
-## API Usage
+Search Page (special feature)
+![Screenshot 2022-07-30 at 2 42 37 AM](https://user-images.githubusercontent.com/55324916/181845055-798f8aac-b06e-4c1a-9d71-7f0639635525.png)
 
-API can be launched using npm run server.
-| Endpoint | Result |
-|------------------------------|-----------------------------------------------------|
-| /users | Lists all available users |
-| /products | Lists all available products |
-| /orders | Lists all available orders  
-| /favourites | Lists all available favourites
+# Collaborators
 
-More info about API usage can be found at the [Postman Collection](https://www.getpostman.com/collections/9f28d57ae334429e1f1f)
+The GitHub usernames:
 
-## Bonus
-
-- Feel free to add functionality (not mandatory)
-- Use redux/context for state management
-- Well explained readme (screenshot etc)
-
----
+- bhaveshpraveen
+- devshaaran
+- gurukishore111
+- priyanshu2015
+- ritumbhara
+- Swarag-N

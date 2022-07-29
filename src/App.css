@@ -103,4 +103,7 @@ footer {
     margin: 5%;
     margin-top: 16%;
   }
+  .productPage {
+    flex-direction: column;
+  }
 }

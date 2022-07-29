@@ -56,11 +56,7 @@ const ProductPage = () => {
   return (
     <div>
       {prod ? (
-        <Box
-          sx={{
-            bgcolor: "white",
-          }}
-        >
+        <div>
           <Card className="productPage">
             <CardContent>
               <img
@@ -105,7 +101,7 @@ const ProductPage = () => {
               {msg}
             </Alert>
           </Snackbar>
-        </Box>
+        </div>
       ) : (
         <p className="loading"></p>
       )}

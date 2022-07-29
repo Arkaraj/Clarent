@@ -1,5 +1,5 @@
 let auth = "664"; // User must be logged to write the resource. Everyone can read the resource.
-let own = "644"; // User must own the resource to write the resource. Everyone can read the resource.
+// let own = "644"; // User must own the resource to write the resource. Everyone can read the resource.
 
 // eslint-disable-next-line
 export default {

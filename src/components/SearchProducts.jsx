@@ -22,9 +22,13 @@ const SearchProducts = () => {
       {loaded ? (
         <Grid item xs={12}>
           <Grid container justifyContent="center" spacing={5}>
-            {products.map((prod) => (
-              <ProductCard product={prod} key={prod.id} />
-            ))}
+            {products.length > 0 ? (
+              products.map((prod) => (
+                <ProductCard product={prod} key={prod.id} />
+              ))
+            ) : (
+              <p>No Results Found!</p>
+            )}
           </Grid>
         </Grid>
       ) : (

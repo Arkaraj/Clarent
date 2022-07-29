@@ -132,15 +132,30 @@
     },
     {
       "productId": [
-        3,
         2,
         1
       ],
       "userId": 2,
-      "total-amount": 1650,
+      "total-amount": 1050,
       "id": 3
     }
   ],
-  "favourites": [],
+  "favourites": [
+    {
+      "favouriteList": 3,
+      "userId": 2,
+      "id": 1
+    },
+    {
+      "favouriteList": 5,
+      "userId": 2,
+      "id": 2
+    },
+    {
+      "favouriteList": 4,
+      "userId": 2,
+      "id": 3
+    }
+  ],
   "carts": []
 }

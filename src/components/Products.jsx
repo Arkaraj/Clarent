@@ -7,9 +7,6 @@ import { AuthContext } from "../Context/AuthContext";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {
-    user: { id },
-  } = useContext(AuthContext);
   useEffect(() => {
     ProductService.getAllProducts().then((data) => {
       setProducts(data);
