@@ -10,12 +10,18 @@ export default ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isloaded, setIsLoaded] = useState(false);
   const [accessToken, setAccessToken] = useState("");
+  const [cartItems, setCartItems] = useState(0);
 
   useEffect(() => {
     let userString = localStorage.getItem("user");
     if (userString) {
       setIsAuthenticated(true);
       setUser(JSON.parse(userString));
+      AuthService.getUsersCartProducts(JSON.parse(userString).id).then(
+        (data) => {
+          setCartItems(data.length);
+        }
+      );
     }
     setIsLoaded(true);
   }, []);
@@ -33,6 +39,8 @@ export default ({ children }) => {
             setIsAuthenticated,
             accessToken,
             setAccessToken,
+            cartItems,
+            setCartItems,
           }}
         >
           {children}

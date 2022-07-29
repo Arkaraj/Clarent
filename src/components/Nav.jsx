@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../Context/AuthContext";
 import SearchBar from "./SearchBar";
@@ -35,9 +37,13 @@ const Nav = () => {
     setAnchorElUser(null);
   };
 
-  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(
-    AuthContext
-  );
+  const {
+    user,
+    setUser,
+    isAuthenticated,
+    setIsAuthenticated,
+    cartItems,
+  } = useContext(AuthContext);
   const pages = isAuthenticated
     ? [{ name: "Products", link: "/products" }]
     : [{ name: "Register", link: "/register" }];
@@ -183,7 +189,12 @@ const Nav = () => {
             </Box>
 
             {isAuthenticated ? (
-              <Box sx={{ ml: 2 }}>
+              <Box
+                sx={{
+                  ml: 2,
+                }}
+                style={{ display: "flex", alignItems: "center" }}
+              >
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar
@@ -233,6 +244,14 @@ const Nav = () => {
                     </MenuItem>
                   ))}
                 </Menu>
+                <Link
+                  to={`/cart`}
+                  style={{ textDecoration: "none", color: "white" }}
+                  className="icon-cart"
+                >
+                  <ShoppingCartIcon sx={{ ml: 1 }} />
+                  <span>{cartItems}</span>
+                </Link>
               </Box>
             ) : (
               <Button color="inherit" component="a" href="/login">

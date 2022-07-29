@@ -87,7 +87,12 @@ const Register = () => {
       setMessage(data.message);
       setStatus("success");
       if (data.success) {
-        setUser({ firstname: "", lastname: "", password: "", email: "" });
+        setUser({
+          firstname: "",
+          lastname: "",
+          password: "",
+          email: "",
+        });
 
         // execute after 2 secs
         timerID = setTimeout(() => {

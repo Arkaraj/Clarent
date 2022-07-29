@@ -9,6 +9,9 @@ import PublicRoute from "./Hocs/PublicRoutes";
 import PrivateRoutes from "./Hocs/PrivateRoutes";
 import Profile from "./Components/Profile";
 import Register from "./Components/Register";
+import Products from "./Components/Products";
+import ProductPage from "./Components/ProductPage";
+import CartPage from "./Components/CartPage";
 
 function App() {
   return (
@@ -39,6 +42,32 @@ function App() {
               element={
                 <PrivateRoutes>
                   <Profile />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <PrivateRoutes>
+                  <Products />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/product/:id"
+              exact
+              element={
+                <PrivateRoutes>
+                  <ProductPage />
+                </PrivateRoutes>
+              }
+            />
+            <Route
+              path="/cart"
+              exact
+              element={
+                <PrivateRoutes>
+                  <CartPage />
                 </PrivateRoutes>
               }
             />

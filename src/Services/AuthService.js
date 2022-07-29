@@ -39,4 +39,14 @@ export default {
     }
     return dataFrmt;
   },
+  getUserInfo: async (id) => {
+    const res = await fetch(`users?id=${id}`);
+    let data = await res.json();
+    return data[0];
+  },
+  getUsersCartProducts: async (id) => {
+    const res = await fetch(`carts?userid=${id}`);
+    let data = await res.json();
+    return data;
+  },
 };
