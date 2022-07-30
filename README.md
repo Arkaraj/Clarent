@@ -31,13 +31,20 @@ npm start
 
 ```
 
+# Features
+
+- Login/Register
+- User can add To Cart, and Favourites (stored in db)
+- CheckOut (Order)
+- Search products (but should provide exact title)
+
 # Images
 
 Login
 ![Screenshot 2022-07-30 at 2 50 13 AM](https://user-images.githubusercontent.com/55324916/181844705-65383e51-70b8-4f93-b182-c77f4fd9a8af.png)
 
-Register (added my own)
-![Screenshot 2022-07-30 at 2 50 33 AM](https://user-images.githubusercontent.com/55324916/181844708-8d13449e-8e46-4808-a974-81a1b978d178.png)
+Register
+![Screenshot 2022-07-30 at 12 11 55 PM](https://user-images.githubusercontent.com/55324916/181878315-3b30d673-f240-40f7-b019-77dcd4339ed4.png)
 
 Phone View
 ![Screenshot 2022-07-30 at 2 51 22 AM](https://user-images.githubusercontent.com/55324916/181844718-19bcde5c-c8bc-4594-bd31-e11d7995fc1c.png)
@@ -70,8 +77,6 @@ Search Page (special feature)
 ![Screenshot 2022-07-30 at 2 42 37 AM](https://user-images.githubusercontent.com/55324916/181845055-798f8aac-b06e-4c1a-9d71-7f0639635525.png)
 
 # Collaborators
-
-The GitHub usernames:
 
 - bhaveshpraveen
 - devshaaran

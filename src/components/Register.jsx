@@ -34,12 +34,15 @@ const useStyles = () => {
       borderTopLeftRadius: "1rem",
     },
     loginDiv: {
+      width: "40%",
       padding: "2%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      borderTopRightRadius: "1rem",
-      borderBottomRightRadius: "1rem",
+      justifyContent: "center",
+      borderRadius: "1rem",
+      marginRight: "auto",
+      marginLeft: "auto",
     },
     avatar: {
       margin: theme.spacing(1),
@@ -106,105 +109,101 @@ const Register = () => {
   };
 
   return (
-    <Grid container component="main" sx={classes.root}>
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} sx={classes.image} />
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={5}
-        component={Paper}
-        elevation={6}
-        square
-        sx={classes.loginDiv}
+    <Grid
+      item
+      xs={12}
+      sm={8}
+      md={5}
+      component={Paper}
+      elevation={6}
+      square
+      sx={classes.loginDiv}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "20%",
+          marginBottom: "20%",
+        }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginTop: "20%",
-            marginBottom: "20%",
-          }}
-        >
-          <Avatar sx={classes.avatar}></Avatar>
-          <Typography component="h1" variant="h5">
-            Sign Up
-          </Typography>
-          <form sx={classes.form} onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              label="First Name"
-              name="firstname"
-              type="text"
-              required
-              onChange={onChangeCred}
-              autoComplete="first name"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              label="Last Name"
-              name="lastname"
-              type="text"
-              required
-              onChange={onChangeCred}
-              autoComplete="last name"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              label="Email Address"
-              name="email"
-              type="email"
-              required
-              onChange={onChangeCred}
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              required
-              onChange={onChangeCred}
-              autoComplete="current-password"
-            />
+        <Avatar sx={classes.avatar}></Avatar>
+        <Typography component="h1" variant="h5">
+          Sign Up
+        </Typography>
+        <form sx={classes.form} onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="First Name"
+            name="firstname"
+            type="text"
+            required
+            onChange={onChangeCred}
+            autoComplete="first name"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="Last Name"
+            name="lastname"
+            type="text"
+            required
+            onChange={onChangeCred}
+            autoComplete="last name"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            label="Email Address"
+            name="email"
+            type="email"
+            required
+            onChange={onChangeCred}
+            autoComplete="email"
+            autoFocus
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            required
+            onChange={onChangeCred}
+            autoComplete="current-password"
+          />
 
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              sx={classes.submit}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  {"Already have an account? Sign In"}
-                </Link>
-              </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            sx={classes.submit}
+          >
+            Sign In
+          </Button>
+          <Grid container>
+            <Grid item>
+              <Link href="/login" variant="body2">
+                {"Already have an account? Sign In"}
+              </Link>
             </Grid>
-          </form>
-          {message ? (
-            <>
-              <Message msg={message} status={status} />
-            </>
-          ) : null}
-        </div>
-      </Grid>
+          </Grid>
+        </form>
+        {message ? (
+          <>
+            <Message msg={message} status={status} />
+          </>
+        ) : null}
+      </div>
     </Grid>
   );
 };
